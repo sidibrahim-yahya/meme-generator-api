@@ -1,0 +1,28 @@
+vendor/
+node_modules/
+
+public/storage
+
+# Ignorer les fichiers de logs, cache, sessions, etc.
+storage/*.log
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
+
+
+# Ignorer les fichiers système et inutiles
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.lnk
+
+# Ignorer les artefacts d'éditeur ou temporaires
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# Ignorer Git
+.git
+.gitignore

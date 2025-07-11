@@ -1,0 +1,33 @@
+version: '3'
+services:
+  meme-generator-app:
+    build: .
+    container_name: meme-generator-app
+    ports:
+      - "7562:80"
+    volumes:
+      - .:/var/www/html
+      - /var/www/html/vendor
+      - /var/www/html/node_modules
+    restart: always
+
+  db:
+    image: mysql:8.0.27
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - meme_generator_app_db_volume:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: meme_generator_app
+      MYSQL_ROOT_PASSWORD: password
+      UPLOAD_LIMIT: 1G
+      MEMORY_LIMIT: 3000M
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+
+volumes:
+  meme_generator_app_db_volume:
+  meme_generator_app_storage:
